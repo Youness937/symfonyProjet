@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Liste des inscriptions</h1>
+
+    <ul class="list-group">
+        {% for inscription in inscriptions %}
+            <li class="list-group-item">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <span>{{ inscription.laformation.dateDebut|date('Y-m-d') }} - {{ inscription.laformation.nbreHeures }} heures - {{ inscription.laformation.departement }} - {{ inscription.laformation.leproduit }}</span>
+                        </br>
+                        <span>Employé: {{ inscription.lemploye.nom }} {{ inscription.lemploye.prenom }}</span>
+                    </div>
+                    <div>
+                        <a href="{{ path('serv_inscription_valider', {'id': inscription.id}) }}"  class="btn btn-warning">Valider l'inscription</a>
+                        <a href="{{ path('serv_inscription_supprimer', {'id': inscription.id}) }}" class="btn btn-danger">Refuser l'inscription</a>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+
+    {# Affichage des messages flash de type danger #}
+    {% for flashMessage in app.flashes('danger') %}
+        <div class="alert alert-danger" id="danger-flash">{{ flashMessage }}</div>
+    {% endfor %}
+
+    {# Affichage des messages flash de type success #}
+    {% for flashMessage in app.flashes('success') %}
+        <div class="alert alert-success" id="success-flash">{{ flashMessage }}</div>
+    {% endfor %}
+
+    {# Script JavaScript pour faire disparaître les messages flash après 3 secondes #}
+    <script>
+        // Sélection des éléments flash
+        var dangerFlash = document.getElementById('danger-flash');
+        var successFlash = document.getElementById('success-flash');
+
+        // Fonction pour faire disparaître les messages flash après 3 secondes
+        function hideFlashMessages() {
+            if (dangerFlash) {
+                setTimeout(function() {
+                    dangerFlash.style.display = 'none';
+                }, 3000); // 3000 millisecondes = 3 secondes
+            }
+            if (successFlash) {
+                setTimeout(function() {
+                    successFlash.style.display = 'none';
+                }, 3000); // 3000 millisecondes = 3 secondes
+            }
+        }
+
+        // Appeler la fonction pour faire disparaître les messages flash après le chargement de la page
+        window.onload = function() {
+            hideFlashMessages();
+        };
+    </script>
+
+{% endblock %}

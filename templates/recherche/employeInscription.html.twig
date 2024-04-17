@@ -1,0 +1,13 @@
+{# templates/recherche/employeInscription.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Liste des inscription de l'employe : {{nom}}  {{prenom}}</h1>
+
+    <ul>
+        {% for inscription in inscriptions %}
+            <li> ‎ ‎ statut : {{inscription.statut}}  produit :{{inscription.laformation.leproduit.libelle}} </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

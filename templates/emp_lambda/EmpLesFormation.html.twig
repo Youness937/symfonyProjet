@@ -1,0 +1,26 @@
+{% extends 'base2.html.twig' %}
+
+{% block body %}
+
+    <h1>Liste de mes formations</h1>
+
+    <ul class="list-group">
+        {% for inscription in inscriptions %}
+            <li class="list-group-item">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <span>Date : {{ inscription.laformation.dateDebut|date('Y-m-d') }} - {{ inscription.laformation.nbreHeures }} heures - departement : {{ inscription.laformation.departement }} - en {{ inscription.laformation.leproduit.libelle }} - Statut: {{ inscription.statut }}</span>
+                    </div>
+                    <div>
+                        {% if inscription.statut == 0 %}
+                            <button type="button" class="btn btn-warning">En attente de validation</button>
+                        {% elseif inscription.statut == 1 %}
+                            <button type="button" class="btn btn-success">Validé</button>
+                        {% endif %}
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

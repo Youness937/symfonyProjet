@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+            width: 100%;
+            text-align: left;
+        }
+
+        input, select {
+            width: calc(100% - 16px);
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, select:focus {
+            border-color: #2E40FD;
+        }
+
+        input[type="submit"] {
+            background-color: #2E40FD;
+            color: white;
+            cursor: pointer;
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2E40FD;
+        }
+
+        .icon {
+            margin-right: 8px;
+        }
+    </style>
+    <title>Formulaire</title>
+</head>
+<body>
+
+<form action="{{ path('serv_formation_ajouter') }}" method="post">
+    {{ form_start(form) }}
+    {{ form_row(form.dateDebut) }}
+    {{ form_row(form.nbreHeures) }}
+    {{ form_row(form.departement) }}
+    {{ form_row(form.leproduit) }}
+    <input type="submit" value="Enregistrer" class="btn-save">
+    {{ form_end(form) }}
+</form>
+
+</body>
+</html>

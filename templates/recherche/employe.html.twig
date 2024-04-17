@@ -1,0 +1,13 @@
+{# templates/recherche/employe.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Liste des employes de nom "{{nom}}" et de statut {{statut}}</h1>
+
+    <ul>
+        {% for employe in ensEmployes %}
+            <li>Nom : {{ employe.nom}} , ‎ ‎ prenom: {{ employe.prenom}} , ‎ ‎  statut : {{ employe.statut }} </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,13 @@
+{# templates/recherche/inscriptionByLibelle.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Liste des inscription du produit : {{libelle}}</h1>
+
+    <ul>
+        {% for inscription in inscriptions %}
+            <li>id : {{ inscription.id}} ‎ ‎ statut : {{inscription.statut}} </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
